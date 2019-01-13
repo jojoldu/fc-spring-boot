@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+</head>
+<body>
+    <h1>list</h1>
+    <br>
+    <div>count : <span th:text="${count}"></span></div>
+    <div>sessionValue : <span th:text="${session.sessionValue}"></span></div>
+    <table>
+        <tr th:each="board, elementStat : ${list}">
+            <td th:text="${elementStat.index}"></td>
+            <td th:text="${elementStat.even}"></td>
+            <td th:text="${elementStat.odd}"></td>
+            <td th:text="${elementStat.size}"></td>
+            <td th:text="${elementStat.first}"></td>
+            <td th:text="${elementStat.last}"></td>
+            <td th:text="${elementStat.current}"></td>
+            <td th:text="${board.title}"></td>
+            <td th:text="${board.name}"></td>
+            <td th:text="${#temporals.format(board.createDate, 'yyyy-MM-dd HH:mm')}"></td>
+            <td th:text="${board.readCount}"></td>
+        </tr>
+    </table>
+
+    <div th:if="${#lists.size(list) > 2}">
+        list.size() > 2<br>
+    </div>
+    <div th:if="${#lists.size(list) < 4}">
+        list.size() < 4<br>
+    </div>
+
+    <div th:switch="${count}">
+        <p th:case="50">count is 100!</p>
+        <p th:case="100">count is 100!</p>
+        <p th:case="150">count is 100!</p>
+    </div>
+</body>
+</html>
