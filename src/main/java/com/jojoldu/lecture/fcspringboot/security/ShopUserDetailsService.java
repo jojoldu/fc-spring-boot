@@ -27,6 +27,6 @@ public class ShopUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         return userRepository.findByEmail(email)
                 .map(ShopUserDetails::new)
-                .orElse(null);
+                .orElseThrow(IllegalArgumentException::new);
     }
 }
